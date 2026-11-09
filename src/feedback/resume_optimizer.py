@@ -99,7 +99,8 @@ def star_rewrite_suggestion(bullet_text: str) -> Dict[str, Any]:
     Evaluate a specific resume bullet point against the STAR framework.
     """
     clean = bullet_text.strip().lstrip("*-•▪► 0123456789.")
-    has_metric = bool(re.search(r"\b(?:\d+%(?:\.\d+)?|\d+\+|[+\$₹]\d+|\d+ms|\d+s|\d+k|\d+m)\b", clean, re.IGNORECASE))
+    metric_pat = r"(?:\b\d+(?:\.\d+)?\s*(?:%|ms|s|sec|min|k|m|users|requests|req/s|stars|cgpa|gpa)\b|\d+%\b|\d+,\d+|\b\d+\+\b|[+\$₹]\d+)"
+    has_metric = bool(re.search(metric_pat, clean, re.IGNORECASE))
 
     # Detect action verb at beginning
     first_word = clean.split()[0].lower() if clean.split() else ""
@@ -191,7 +192,7 @@ def audit_ats_hygiene(
 
     # 5. Core Sections Check
     required = ["education", "skills", "projects"]
-    missing = [s for s in required if len(sections.get(s, "").strip()) < 25]
+    missing = [s for s in required if len(sections.get(s, "").strip()) < 12]
     if not missing:
         checklist.append({"item": "Essential Section Headers", "status": "PASS", "detail": "Education, Skills, and Projects sections present."})
     else:

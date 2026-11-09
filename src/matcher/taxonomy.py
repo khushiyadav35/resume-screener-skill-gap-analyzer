@@ -62,14 +62,14 @@ class SkillTaxonomy:
         detected_canonical: Set[str] = set()
 
         # 1. Check for Aliases first (e.g. k8s, dsa, oop, reactjs)
+        # Any non-alphanumeric boundary (spaces, punctuation, start/end of line)
         for alias, canonical in self.aliases.items():
-            # Use word boundaries or punctuation boundaries
-            pattern = r"(?:^|[\s,;:\(\)\[\]/|\*•])" + re.escape(alias) + r"(?:$|[\s,;:\(\)\[\]/|\*•])"
+            pattern = r"(?:^|[^a-zA-Z0-9_+#])" + re.escape(alias) + r"(?:$|[^a-zA-Z0-9_+#])"
             if re.search(pattern, text_lower):
                 detected_canonical.add(canonical)
 
         # 2. Check for Canonical Skills
-        # Sort by length descending so multi-word skills ("Data Structures & Algorithms") match before ("Data Structures")
+        # Sort by length descending so multi-word skills match before short ones
         sorted_skills = sorted(self.all_canonical_skills, key=lambda s: len(s), reverse=True)
 
         for skill in sorted_skills:
@@ -80,7 +80,6 @@ class SkillTaxonomy:
 
             # Special case for very short names like "C", "R", "Go"
             if skill_clean in ["c", "r", "go"]:
-                # Specific guarded regex to avoid common English word matches
                 if skill_clean == "c":
                     pat = r"(?:\bC\s*[/,]\s*C\+\+|\bC\+\+\s*[/,]\s*C\b|\b[Pp]rogramming\s+in\s+C\b|\b[Ll]anguage\s*:\s*.*?\bC\b|\bC\s+programming\b)"
                     if re.search(pat, text):
@@ -96,7 +95,7 @@ class SkillTaxonomy:
                 continue
 
             # Standard boundary matching for skills
-            pat = r"(?:^|[\s,;:\(\)\[\]/|\*•])" + re.escape(skill_clean) + r"(?:$|[\s,;:\(\)\[\]/|\*•])"
+            pat = r"(?:^|[^a-zA-Z0-9_+#])" + re.escape(skill_clean) + r"(?:$|[^a-zA-Z0-9_+#])"
             if re.search(pat, text_lower):
                 detected_canonical.add(skill)
 

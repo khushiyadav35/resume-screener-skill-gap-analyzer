@@ -133,12 +133,12 @@ class ATSScorer:
         overall_score = round(min(100.0, max(0.0, overall_score)), 1)
 
         # 5. Determine Placement Readiness Tier
-        if overall_score >= 82.0:
+        if overall_score >= 80.0:
             tier = "Platinum"
             tier_badge = "🏆 Top 5% Placement Candidate"
             tier_desc = "Strong ATS profile. Highly competitive for product-based company screening."
             color = "#10B981"  # Emerald Green
-        elif overall_score >= 68.0:
+        elif overall_score >= 65.0:
             tier = "Gold"
             tier_badge = "🥇 Competitive Candidate"
             tier_desc = "Solid candidate profile. High probability of clearing automated ATS filters."

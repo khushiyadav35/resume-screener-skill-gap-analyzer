@@ -16,8 +16,8 @@ def clean_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     # Collapse multiple blank lines into max 2
     text = re.sub(r"\n{3,}", "\n\n", text)
-    # Strip trailing whitespace on each line
-    lines = [re.sub(r"[ \t]+$", "", line) for line in text.split("\n")]
+    # Collapse multiple spaces and strip trailing whitespace on each line
+    lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.split("\n")]
     return "\n".join(lines).strip()
 
 
