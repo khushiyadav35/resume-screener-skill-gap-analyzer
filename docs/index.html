@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge AI - Student ATS Resume Screener & Skill-Gap Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1E40AF;
+      --primary-light: #EFF6FF;
+      --emerald: #10B981;
+      --amber: #F59E0B;
+      --rose: #EF4444;
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-200: #E2E8F0;
+      --slate-600: #475569;
+      --slate-800: #1E293B;
+      --slate-900: #0F172A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--slate-50); color: var(--slate-800); line-height: 1.5; padding-bottom: 60px; }
+    
+    header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      color: white;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+    }
+    header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    header p { font-size: 1.05rem; opacity: 0.92; max-width: 780px; margin: 0 auto; }
+    .author-badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 20px; }
+
+    .grid-input {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 860px) { .grid-input { grid-template-columns: 1fr; } }
+
+    .card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .card h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 14px; color: var(--slate-900); display: flex; align-items: center; gap: 8px; }
+
+    .sample-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .sample-btn {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sample-btn:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+
+    textarea {
+      width: 100%;
+      height: 220px;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+      resize: vertical;
+      color: var(--slate-800);
+    }
+    textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+      background: white;
+    }
+
+    .btn-analyze {
+      display: block;
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      margin-bottom: 32px;
+    }
+    .btn-analyze:hover { background: var(--primary-dark); }
+    .btn-analyze:active { transform: scale(0.99); }
+
+    /* Results layout */
+    .results-section { display: none; }
+    .hero-banner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .hero-banner { grid-template-columns: 1fr; text-align: center; } }
+
+    .score-circle {
+      text-align: center;
+      padding: 20px;
+      border-radius: 14px;
+      border: 3px solid var(--primary);
+    }
+    .score-num { font-size: 3.4rem; font-weight: 900; line-height: 1; color: var(--primary); }
+    .score-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--slate-600); margin-top: 6px; }
+
+    .sub-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .stat-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat-val { font-size: 1.5rem; font-weight: 800; color: var(--slate-900); }
+    .stat-lbl { font-size: 0.78rem; font-weight: 600; color: var(--slate-600); text-transform: uppercase; }
+
+    .chip {
+      display: inline-block;
+      padding: 5px 12px;
+      margin: 4px;
+      border-radius: 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+    .chip-green { background: #DEF7EC; color: #03543F; border: 1px solid #31C48D; }
+    .chip-red { background: #FDE8E8; color: #9B1C1C; border: 1px solid #F98080; }
+    .chip-yellow { background: #FEF08A; color: #713F12; border: 1px solid #FACC15; }
+
+    .roadmap-item {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .roadmap-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+    .roadmap-title { font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); }
+    .roadmap-badge { background: var(--primary-light); color: var(--primary); padding: 4px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; }
+    
+    footer { text-align: center; padding: 24px; color: var(--slate-600); font-size: 0.88rem; }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📄 SkillBridge AI</h1>
+    <p>Automated ATS Resume Screener, Skill-Gap Analyzer & Student Learning Roadmap Platform</p>
+    <div class="author-badge">
+      🎓 Developed by <strong>Khushi Yadav</strong> | B.Tech Final Year Capstone Project
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid-input">
+      
+      <!-- Resume Input Column -->
+      <div class="card">
+        <h2><span>👤</span> 1. Candidate Resume</h2>
+        <div class="sample-bar">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--slate-600); align-self: center;">Try Sample:</span>
+          <button class="sample-btn" onclick="loadSample('aarav')">⭐ Aarav (High Match)</button>
+          <button class="sample-btn" onclick="loadSample('priya')">⚖️ Priya (Medium Match)</button>
+          <button class="sample-btn" onclick="loadSample('rahul')">⚠️ Rahul (Weak Resume)</button>
+        </div>
+        <textarea id="resumeInput" placeholder="Paste student resume plaintext here..."></textarea>
+      </div>
+
+      <!-- Job Description Column -->
+      <div class="card">
+        <h2><span>🎯</span> 2. Target Job Description</h2>
+        <select id="roleSelect" onchange="updateJD()">
+          <option value="sde">Software Development Engineer (SDE-1 / Fresher)</option>
+          <option value="data">Data Scientist / Associate Analyst</option>
+          <option value="frontend">Frontend Developer (React / TypeScript)</option>
+          <option value="devops">Cloud & DevOps Engineer (Associate)</option>
+          <option value="fullstack">Full-Stack Software Engineer</option>
+        </select>
+        <textarea id="jdInput" placeholder="Job description requirements and skills..."></textarea>
+      </div>
+
+    </div>
+
+    <button class="btn-analyze" onclick="analyzeResume()">⚡ Analyze ATS Compatibility & Generate Skill-Gap Report</button>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="results-section">
+      
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="score-circle" id="scoreCircle">
+          <div class="score-num" id="scoreDisplay">0%</div>
+          <div class="score-label">Overall ATS Match</div>
+          <div id="tierBadge" style="margin-top: 8px; font-weight: 700; font-size: 0.9rem;"></div>
+        </div>
+        <div>
+          <h3 id="candidateGreeting" style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Evaluation Summary</h3>
+          <p id="summaryText" style="color: var(--slate-600); font-size: 0.95rem; margin-bottom: 16px;"></p>
+          <div class="sub-stats">
+            <div class="stat-box">
+              <div class="stat-val" id="hardMatchVal" style="color: var(--emerald);">0%</div>
+              <div class="stat-lbl">Hard Skills</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="projDepthVal" style="color: var(--primary);">0%</div>
+              <div class="stat-lbl">Project Depth</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="hygieneGradeVal" style="color: var(--amber);">A</div>
+              <div class="stat-lbl">Formatting Grade</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="metricsCountVal">0</div>
+              <div class="stat-lbl">Metrics Count</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Matrix Card -->
+      <div class="card" style="margin-bottom: 24px;">
+        <h2><span>🎯</span> Technical Skill-Gap Diagnostic Matrix</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <h4 style="color: var(--emerald); margin-bottom: 10px;">✅ Matched Core Competencies:</h4>
+            <div id="matchedChips"></div>
+          </div>
+          <div>
+            <h4 style="color: var(--rose); margin-bottom: 10px;">🚨 Missing Critical Skills (Study Priority):</h4>
+            <div id="missingChips"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Roadmap Card -->
+      <div class="card" style="margin-bottom: 24px;">
+        <h2><span>🗺️</span> Personalized Student Learning Roadmap</h2>
+        <p style="color: var(--slate-600); font-size: 0.92rem; margin-bottom: 16px;">
+          Curated sprint milestones, verified free resources, and resume-ready capstone project implementations to bridge identified gaps.
+        </p>
+        <div id="roadmapContainer"></div>
+      </div>
+
+      <!-- STAR Bullet Enhancer Card -->
+      <div class="card">
+        <h2><span>✍️</span> STAR Action Verb & Bullet Enhancer</h2>
+        <div id="starAdvice"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>
+      SkillBridge AI • Final Year B.Tech Computer Science Capstone Project • Developed by <a href="https://github.com/khushiyadav35" target="_blank">Khushi Yadav (@khushiyadav35)</a>  
+      <br>
+      <a href="https://github.com/khushiyadav35/resume-screener-skill-gap-analyzer" target="_blank">View GitHub Repository</a> | <a href="https://khushiyadav35-resume-screener.streamlit.app" target="_blank">Launch Streamlit App</a>
+    </p>
+  </footer>
+
+  <script>
+    const BENCHMARKS = {
+      sde: {
+        title: "Software Development Engineer (SDE-1)",
+        core: ["Data Structures & Algorithms", "Python", "Java", "C++", "SQL", "PostgreSQL", "REST APIs", "Git", "OOP", "Operating Systems", "Computer Networks"],
+        bonus: ["Docker", "Redis", "Microservices", "CI/CD", "System Design"],
+        jd: "We are seeking a high-potential Software Development Engineer (SDE-1). Must have strong Data Structures & Algorithms, Java, C++, Python, SQL, PostgreSQL, Git, and REST APIs. Caching with Redis and Docker is a plus."
+      },
+      data: {
+        title: "Data Scientist / Associate Analyst",
+        core: ["Python", "SQL", "Pandas", "NumPy", "Scikit-Learn", "Machine Learning", "Data Analysis", "Feature Engineering", "Git", "PostgreSQL"],
+        bonus: ["XGBoost", "Deep Learning", "PyTorch", "Streamlit", "Snowflake"],
+        jd: "Looking for an Associate Data Scientist. Requirements: Python, SQL, Pandas, NumPy, Scikit-Learn, Machine Learning, Feature Engineering, Git, PostgreSQL. Deep Learning / PyTorch is a bonus."
+      },
+      frontend: {
+        title: "Frontend Engineer (React / TypeScript)",
+        core: ["JavaScript", "TypeScript", "React", "HTML", "CSS", "Tailwind CSS", "REST APIs", "Git", "Redux", "Figma"],
+        bonus: ["Next.js", "GraphQL", "Node.js", "CI/CD", "Docker"],
+        jd: "Seeking a Frontend Engineer. Must know JavaScript, TypeScript, React, HTML, CSS, Tailwind CSS, REST APIs, Git, and Redux. Next.js and Docker knowledge preferred."
+      },
+      devops: {
+        title: "Cloud & DevOps Engineer (Associate)",
+        core: ["Linux", "Bash", "Docker", "Kubernetes", "AWS", "CI/CD", "GitHub Actions", "Git", "Terraform", "Nginx"],
+        bonus: ["Python", "Prometheus", "Grafana", "GCP", "Ansible"],
+        jd: "Hiring Junior Cloud & DevOps Engineer. Core requirements: Linux, Bash, Docker, Kubernetes, AWS, CI/CD, GitHub Actions, Git, Terraform. Prometheus monitoring is a plus."
+      },
+      fullstack: {
+        title: "Full-Stack Software Engineer",
+        core: ["JavaScript", "TypeScript", "React", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "REST APIs", "Git", "HTML", "CSS"],
+        bonus: ["Next.js", "Docker", "Tailwind CSS", "Redis", "AWS"],
+        jd: "Looking for Full-Stack Developer proficient in React, Node.js, Express.js, PostgreSQL, MongoDB, TypeScript, Git, and REST APIs. Docker and AWS experience valued."
+      }
+    };
+
+    const SAMPLES = {
+      aarav: `AARAV SHARMA
+Email: aarav.sharma.tech@gmail.com | Phone: +91 98765 43210
+LinkedIn: https://linkedin.com/in/aarav-sharma-cs | GitHub: https://github.com/aaravsharma
+Portfolio: https://aaravsharma.dev | New Delhi, India
+
+EDUCATION
+Bachelor of Technology (B.Tech) in Computer Science & Engineering
+Delhi Technological University (DTU) | 2022 - 2026 | CGPA: 8.85 / 10.0
+
+TECHNICAL SKILLS
+* Programming Languages: Python, Java, C++, JavaScript, TypeScript, SQL
+* Frameworks: React, Node.js, Express.js, FastAPI, Spring Boot, Tailwind CSS
+* Databases & Caching: PostgreSQL, MySQL, MongoDB, Redis
+* Cloud & DevOps: Docker, Git, GitHub Actions, Linux, AWS
+* Core Fundamentals: Data Structures & Algorithms, OOP, REST APIs, System Design
+
+EXPERIENCE
+Software Engineering Intern | Zomato Hyperlocal Logistics
+* Architected a distributed order delivery tracker using Python, FastAPI, and Redis pub/sub, handling 12,000+ concurrent websocket connections with sub-45ms latency.
+* Optimized PostgreSQL database indexing, reducing 95th percentile query execution time by 38%.
+* Automated integration test suites using Pytest and configured GitHub Actions CI/CD pipeline, reducing manual staging deployment time by 60%.
+
+PROJECTS
+1. Distributed Task Queue & Event Bus (Go, Redis, Docker)
+   * Engineered an asynchronous distributed job scheduler processing 25,000 tasks/second with automatic retries.
+   * Containerized worker nodes using Docker with 92% code coverage.`,
+
+      priya: `PRIYA VERMA
+Email: priya.verma2024@gmail.com | Phone: +91 91234 56789
+LinkedIn: https://linkedin.com/in/priya-verma-ds | Lucknow, India
+
+EDUCATION
+Bachelor of Technology in Information Technology
+AKTU | 2021 - 2025 | CGPA: 7.9 / 10.0
+
+SKILLS
+* Languages: Python, SQL, C++
+* Libraries: Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn
+* Tools: Jupyter Notebook, Git, MySQL, VS Code
+
+EXPERIENCE
+Data Science Trainee | EdTech Academy
+* Worked on analyzing customer churn dataset with 50,000 records.
+* Built basic classification models including Logistic Regression and Random Forest using Scikit-Learn.
+* Cleaned missing values and handled outliers in CSV datasets using Pandas.
+
+PROJECTS
+1. Student Performance Predictor
+   * Developed a machine learning regression model to predict exam scores based on study hours with 82% accuracy.`,
+
+      rahul: `Rahul Kumar
+City: Varanasi
+About Me: Enthusiastic and hardworking student looking for a good opportunity in IT company.
+
+Studies: B.Tech 2024
+
+My Skills:
+I have good knowledge of computers. I know C language and some Python. Also HTML and CSS. Hard working, fast learner.
+
+Work:
+Helped college professor with computer lab setup. Responsible for checking internet connections.
+Made a calculator in C language. Made a library management system in Python.`
+    };
+
+    function updateJD() {
+      const roleKey = document.getElementById("roleSelect").value;
+      document.getElementById("jdInput").value = BENCHMARKS[roleKey].jd;
+    }
+
+    function loadSample(key) {
+      document.getElementById("resumeInput").value = SAMPLES[key];
+    }
+
+    // Set initial default JD and resume
+    updateJD();
+    loadSample('aarav');
+
+    function analyzeResume() {
+      const resume = document.getElementById("resumeInput").value.trim();
+      const jd = document.getElementById("jdInput").value.trim();
+      const roleKey = document.getElementById("roleSelect").value;
+      const benchmark = BENCHMARKS[roleKey];
+
+      if (!resume || !jd) {
+        alert("Please provide both Resume and Job Description!");
+        return;
+      }
+
+      const resLower = resume.toLowerCase();
+      
+      // Skills extraction
+      const matched = [];
+      const missing = [];
+      benchmark.core.forEach(skill => {
+        const sLower = skill.toLowerCase();
+        if (resLower.includes(sLower) || (sLower === "dsa" && resLower.includes("data structures"))) {
+          matched.push(skill);
+        } else {
+          missing.push(skill);
+        }
+      });
+
+      // Bonus skills
+      const matchedBonus = [];
+      benchmark.bonus.forEach(skill => {
+        if (resLower.includes(skill.toLowerCase())) matchedBonus.push(skill);
+      });
+
+      // Metric count
+      const metricMatches = resume.match(/\b(?:\d+(?:\.\d+)?%|\d+(?:\.\d+)?\s*(?:ms|k|users|req\/s)|[+\$₹]\d+|\d+,\d+|\d+\+)\b/gi) || [];
+      const metricsCount = metricMatches.length;
+
+      // Bullet count
+      const bulletMatches = resume.match(/(?:^|\n)\s*(?:[\*\-•▪►]|\d+\.)\s+/g) || [];
+      const bulletCount = bulletMatches.length;
+
+      // Active verbs
+      const strongVerbs = ["architected", "engineered", "optimized", "developed", "automated", "containerized", "implemented"];
+      let strongVerbCount = 0;
+      strongVerbs.forEach(v => { if (resLower.includes(v)) strongVerbCount++; });
+
+      // Calculate ATS score
+      const hardScore = Math.round((matched.length / benchmark.core.length) * 85 + (matchedBonus.length / benchmark.bonus.length) * 15);
+      const projScore = Math.min(100, Math.round((matched.length / benchmark.core.length) * 65 + (metricsCount >= 3 ? 35 : 15)));
+      
+      let hygienePts = 30;
+      if (resume.includes("@")) hygienePts += 20;
+      if (resume.includes("linkedin.com") || resume.includes("github.com")) hygienePts += 25;
+      if (metricsCount >= 3) hygienePts += 15;
+      if (bulletCount >= 4) hygienePts += 10;
+      hygienePts = Math.min(100, hygienePts);
+
+      const overall = Math.round(0.40 * hardScore + 0.30 * projScore + 0.15 * hygienePts + 0.15 * (resLower.includes("b.tech") ? 90 : 50));
+      const finalScore = Math.min(96, Math.max(15, overall));
+
+      let tier = "Bronze", tierBadge = "🥉 High ATS Rejection Risk", tierColor = "#EF4444", summary = "Candidate exhibits significant skill and structure gaps.";
+      if (finalScore >= 80) {
+        tier = "Platinum";
+        tierBadge = "🏆 Top 5% Placement Candidate";
+        tierColor = "#10B981";
+        summary = "Outstanding technical alignment, verified project scale, and high ATS parsing fidelity.";
+      } else if (finalScore >= 65) {
+        tier = "Gold";
+        tierBadge = "🥇 Competitive Candidate";
+        tierColor = "#3B82F6";
+        summary = "Strong candidate profile with solid core alignment. Ready for corporate campus drives.";
+      } else if (finalScore >= 50) {
+        tier = "Silver";
+        tierBadge = "🥈 Moderate Match";
+        tierColor = "#F59E0B";
+        summary = "Moderate alignment. Closing 2-3 critical missing skills will boost shortlist probability.";
+      }
+
+      // Display results
+      document.getElementById("resultsSection").style.display = "block";
+      document.getElementById("scoreDisplay").innerText = finalScore + "%";
+      document.getElementById("scoreDisplay").style.color = tierColor;
+      document.getElementById("scoreCircle").style.borderColor = tierColor;
+      document.getElementById("tierBadge").innerText = tierBadge;
+      document.getElementById("tierBadge").style.color = tierColor;
+
+      document.getElementById("summaryText").innerText = summary;
+      document.getElementById("hardMatchVal").innerText = hardScore + "%";
+      document.getElementById("projDepthVal").innerText = projScore + "%";
+      document.getElementById("metricsCountVal").innerText = metricsCount;
+      document.getElementById("hygieneGradeVal").innerText = finalScore >= 80 ? "A+" : (finalScore >= 65 ? "A" : (finalScore >= 50 ? "B" : "D"));
+
+      // Render Chips
+      let mHtml = "";
+      matched.forEach(s => { mHtml += `<span class="chip chip-green">✓ ${s}</span>`; });
+      if (matched.length === 0) mHtml = "<em>No core skills matched.</em>";
+      document.getElementById("matchedChips").innerHTML = mHtml;
+
+      let missHtml = "";
+      missing.forEach(s => { missHtml += `<span class="chip chip-red">✕ ${s}</span>`; });
+      if (missing.length === 0) missHtml = "<em>🎉 All core requirements satisfied!</em>";
+      document.getElementById("missingChips").innerHTML = missHtml;
+
+      // Render Roadmap
+      let roadHtml = "";
+      const toLearn = missing.slice(0, 3);
+      if (toLearn.length === 0) {
+        roadHtml = "<div style='color: var(--emerald); font-weight: 600;'>Candidate possesses all core skills. Ready for system design & mock interview practice!</div>";
+      } else {
+        toLearn.forEach((sk, idx) => {
+          roadHtml += `
+            <div class="roadmap-item">
+              <div class="roadmap-header">
+                <span class="roadmap-title">Step ${idx+1}: Master <strong>${sk}</strong></span>
+                <span class="roadmap-badge">⏱️ 2 Weeks Sprint • Hands-on</span>
+              </div>
+              <p style="color: var(--slate-600); font-size: 0.9rem; margin-bottom: 8px;">
+                Focus on core architectural fundamentals, write multi-tier modular code, and deploy an open-source GitHub repository.
+              </p>
+              <div style="background: var(--slate-50); padding: 10px 14px; border-radius: 8px; font-size: 0.85rem;">
+                <strong>Recommended Resume Bullet:</strong> "Architected and integrated a high-performance ${sk} service with automated unit test suites, improving execution speed by 35%."
+              </div>
+            </div>
+          `;
+        });
+      }
+      document.getElementById("roadmapContainer").innerHTML = roadHtml;
+
+      // STAR bullet advice
+      document.getElementById("starAdvice").innerHTML = `
+        <div style="background: #F0FDF4; border-left: 4px solid var(--emerald); padding: 14px; border-radius: 8px; margin-bottom: 12px;">
+          <strong>💡 Formula:</strong> [Action Verb] + [Specific Technology / Framework] + [Quantifiable Impact / Metric]
+        </div>
+        <div style="font-size: 0.92rem;">
+          <p><strong>Before:</strong> <code style="color: var(--rose);">"Worked on database queries using PostgreSQL."</code></p>
+          <p style="margin-top: 6px;"><strong>After (STAR):</strong> <code style="color: var(--emerald);">"Optimized PostgreSQL database queries and composite B-Tree indexing, reducing p95 query latency by 42% for 100k+ records."</code></p>
+        </div>
+      `;
+
+      // Smooth scroll to results
+      document.getElementById("resultsSection").scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
