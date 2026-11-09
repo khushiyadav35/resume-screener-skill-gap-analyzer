@@ -1,0 +1,50 @@
+AARAV SHARMA
+Email: aarav.sharma.tech@gmail.com | Phone: +91 98765 43210
+LinkedIn: https://linkedin.com/in/aarav-sharma-cs | GitHub: https://github.com/aaravsharma
+Portfolio: https://aaravsharma.dev | New Delhi, India
+
+==================================================
+EDUCATION
+==================================================
+Bachelor of Technology (B.Tech) in Computer Science & Engineering
+Delhi Technological University (DTU), New Delhi | 2022 - 2026
+CGPA: 8.85 / 10.0
+Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks
+
+==================================================
+TECHNICAL SKILLS
+==================================================
+* Programming Languages: Python, Java, C++, JavaScript, TypeScript, SQL
+* Frameworks & Libraries: React, Node.js, Express.js, FastAPI, Spring Boot, Tailwind CSS
+* Databases & Caching: PostgreSQL, MySQL, MongoDB, Redis
+* Cloud & DevOps: Docker, Git, GitHub Actions, Linux, AWS (EC2, S3)
+* Core Fundamentals: Data Structures & Algorithms, OOP, REST APIs, System Design, Microservices
+
+==================================================
+EXPERIENCE / INTERNSHIPS
+==================================================
+Software Engineering Intern | Zomato Hyperlocal Logistics
+May 2025 - July 2025 | Gurugram, India
+* Architected a distributed order delivery tracker using Python, FastAPI, and Redis pub/sub, handling 12,000+ concurrent websocket connections with sub-45ms latency.
+* Optimized PostgreSQL database indexing and query plans for restaurant search queries, reducing 95th percentile query execution time by 38%.
+* Automated integration test suites using Pytest and configured GitHub Actions CI/CD pipeline, reducing manual staging deployment time by 60%.
+
+==================================================
+PROJECTS
+==================================================
+1. Distributed Task Queue & Event Bus (Go, Redis, Docker)
+   * Engineered an asynchronous distributed job scheduler capable of processing 25,000 tasks/second with automatic retries and exponential backoff.
+   * Containerized worker nodes using Docker and deployed a multi-container cluster via docker-compose with Prometheus health monitoring.
+   * Open-sourced on GitHub with 150+ stars; comprehensive test suite with 92% code coverage.
+
+2. CloudFlow: Microservices E-Commerce Backend (Java, Spring Boot, PostgreSQL, Kafka)
+   * Designed and built 4 resilient microservices (Auth, Inventory, Orders, Payments) communicating via Apache Kafka and REST APIs.
+   * Implemented JWT-based role-based access control (RBAC) and bcrypt password hashing for 10,000+ simulated user accounts.
+   * Integrated Stripe API test webhooks and configured database transaction rollbacks for fault-tolerant checkout flows.
+
+==================================================
+ACHIEVEMENTS & CERTIFICATIONS
+==================================================
+* Solved 600+ problems across LeetCode and Codeforces (Knight rank on LeetCode, Max Rating 1940).
+* Finalist at Smart India Hackathon (SIH 2024), Top 10 out of 2,400 participating student teams.
+* AWS Certified Cloud Practitioner (CLF-C02) - Validation ID: AWS-883920.

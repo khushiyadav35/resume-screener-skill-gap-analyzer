@@ -1,0 +1,104 @@
+{
+  "categories": {
+    "languages": [
+      "Python", "Java", "C++", "C", "C#", "JavaScript", "TypeScript", "Go", "Rust",
+      "Kotlin", "Swift", "PHP", "Ruby", "SQL", "R", "Bash", "Shell", "Scala",
+      "Dart", "HTML", "CSS", "MATLAB"
+    ],
+    "web_frameworks": [
+      "React", "Next.js", "Angular", "Vue.js", "Node.js", "Express.js", "Django",
+      "FastAPI", "Flask", "Spring Boot", "ASP.NET", "Ruby on Rails", "NestJS",
+      "Tailwind CSS", "Bootstrap", "Redux", "GraphQL", "REST APIs", "WebSockets",
+      "Microservices", "gRPC"
+    ],
+    "databases": [
+      "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "Cassandra",
+      "Elasticsearch", "Firebase", "DynamoDB", "Oracle", "Neo4j", "Supabase",
+      "Snowflake", "ClickHouse"
+    ],
+    "cloud_devops": [
+      "AWS", "Azure", "Google Cloud Platform (GCP)", "Docker", "Kubernetes",
+      "Terraform", "CI/CD", "GitHub Actions", "Jenkins", "Linux", "Nginx",
+      "Ansible", "Serverless", "Helm", "Prometheus", "Grafana", "Cloudflare"
+    ],
+    "ml_ai": [
+      "Machine Learning", "Deep Learning", "Natural Language Processing (NLP)",
+      "Computer Vision", "PyTorch", "TensorFlow", "Keras", "Scikit-Learn",
+      "Pandas", "NumPy", "OpenCV", "Hugging Face", "Large Language Models (LLMs)",
+      "LangChain", "Retrieval-Augmented Generation (RAG)", "Transformers",
+      "Generative AI", "XGBoost", "Matplotlib", "Seaborn", "Data Analysis",
+      "Feature Engineering"
+    ],
+    "core_cs": [
+      "Data Structures & Algorithms", "Object-Oriented Programming (OOP)",
+      "System Design", "Database Management Systems (DBMS)", "Operating Systems",
+      "Computer Networks", "Software Engineering", "Multithreading",
+      "Distributed Systems", "Design Patterns", "Clean Code"
+    ],
+    "tools": [
+      "Git", "GitHub", "GitLab", "VS Code", "Postman", "JIRA", "Linux CLI",
+      "Jupyter Notebook", "Figma", "Docker Desktop", "PyCharm", "Vim"
+    ],
+    "soft_skills": [
+      "Problem Solving", "Critical Thinking", "Technical Communication",
+      "Team Collaboration", "Leadership", "Time Management", "Agile / Scrum",
+      "Code Review", "Adaptability", "Continuous Learning", "Analytical Skills"
+    ]
+  },
+  "aliases": {
+    "k8s": "Kubernetes",
+    "reactjs": "React",
+    "react.js": "React",
+    "nodejs": "Node.js",
+    "node.js": "Node.js",
+    "expressjs": "Express.js",
+    "express.js": "Express.js",
+    "postgres": "PostgreSQL",
+    "postgresql": "PostgreSQL",
+    "mongo": "MongoDB",
+    "mongodb": "MongoDB",
+    "sklearn": "Scikit-Learn",
+    "dsa": "Data Structures & Algorithms",
+    "oop": "Object-Oriented Programming (OOP)",
+    "oops": "Object-Oriented Programming (OOP)",
+    "os": "Operating Systems",
+    "cn": "Computer Networks",
+    "dbms": "Database Management Systems (DBMS)",
+    "aws": "AWS",
+    "gcp": "Google Cloud Platform (GCP)",
+    "tf": "TensorFlow",
+    "nlp": "Natural Language Processing (NLP)",
+    "cv": "Computer Vision",
+    "ci/cd": "CI/CD",
+    "cicd": "CI/CD",
+    "rest": "REST APIs",
+    "restful": "REST APIs",
+    "rest api": "REST APIs",
+    "rest apis": "REST APIs",
+    "js": "JavaScript",
+    "ts": "TypeScript",
+    "py": "Python",
+    "cpp": "C++",
+    "golang": "Go",
+    "llm": "Large Language Models (LLMs)",
+    "llms": "Large Language Models (LLMs)",
+    "rag": "Retrieval-Augmented Generation (RAG)",
+    "genai": "Generative AI",
+    "scikit learn": "Scikit-Learn",
+    "nextjs": "Next.js",
+    "next.js": "Next.js",
+    "vue": "Vue.js",
+    "vuejs": "Vue.js",
+    "tailwind": "Tailwind CSS",
+    "tailwindcss": "Tailwind CSS",
+    "spring": "Spring Boot",
+    "springboot": "Spring Boot",
+    "git hub": "GitHub",
+    "actions": "GitHub Actions",
+    "gh actions": "GitHub Actions",
+    "agile": "Agile / Scrum",
+    "scrum": "Agile / Scrum",
+    "sys design": "System Design",
+    "system architecture": "System Design"
+  }
+}

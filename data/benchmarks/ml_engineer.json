@@ -1,0 +1,17 @@
+{
+  "id": "ml_engineer",
+  "title": "Machine Learning Engineer (Graduate / Entry-Level)",
+  "company_tier": "AI Research Labs & Enterprise Applied AI",
+  "experience_level": "Fresher / M.Tech / B.Tech Final Year",
+  "job_description": "We are seeking a Machine Learning Engineer to design, train, evaluate, and productionize deep learning models and Generative AI / LLM workflows. You will convert bleeding-edge research into low-latency API inference services.\n\nKey Responsibilities:\n- Train and fine-tune deep learning neural networks using PyTorch and Hugging Face Transformers.\n- Build Retrieval-Augmented Generation (RAG) pipelines using LangChain, Vector Databases, and LLMs.\n- Preprocess multimodal datasets, execute feature extraction, and benchmark model inference latency.\n- Package machine learning inference pipelines into lightweight Docker containers and FastAPI endpoints.\n- Optimize model weights using quantization (ONNX, TensorRT, bitsandbytes).\n\nMinimum Qualifications:\n- Degree in CS, AI, Data Science, or related engineering discipline.\n- Strong proficiency in Python, PyTorch, Scikit-Learn, and NumPy.\n- Solid conceptual understanding of Deep Learning, Transformers, NLP, and LLM evaluation.\n- Experience with Git, Docker, and REST API deployment.",
+  "core_skills": [
+    "Python", "PyTorch", "Machine Learning", "Deep Learning",
+    "Natural Language Processing (NLP)", "Large Language Models (LLMs)",
+    "Hugging Face", "Scikit-Learn", "FastAPI", "Docker", "Git"
+  ],
+  "bonus_skills": [
+    "LangChain", "Retrieval-Augmented Generation (RAG)", "Generative AI",
+    "Computer Vision", "TensorFlow", "Kubernetes", "Linux"
+  ],
+  "min_education": "B.Tech / M.Tech in CS / AI / Data Science"
+}

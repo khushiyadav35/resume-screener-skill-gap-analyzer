@@ -1,0 +1,15 @@
+{
+  "id": "frontend_developer",
+  "title": "Frontend Engineer (React / TypeScript)",
+  "company_tier": "SaaS / Modern Web Product Companies",
+  "experience_level": "Fresher / Junior (0-1 Years)",
+  "job_description": "We are seeking a Frontend Engineer passionate about crafting pixel-perfect, accessible, and ultra-fast web user interfaces. You will translate Figma mockups into reusable component architectures and integrate with RESTful and GraphQL endpoints.\n\nKey Responsibilities:\n- Build reactive, modular client-side components using React, TypeScript, and modern CSS/Tailwind.\n- Manage complex client state using Redux Toolkit, Context API, or React Query.\n- Optimize web vitals (LCP, FID, CLS) for maximum speed, responsiveness, and cross-browser fidelity.\n- Write unit tests for UI components using Jest / React Testing Library.\n- Collaborate closely with UI/UX designers in Figma and backend engineers.\n\nMinimum Qualifications:\n- Strong foundation in JavaScript (ES6+), TypeScript, HTML5, and CSS3.\n- Hands-on project experience with React, Next.js, and modern styling libraries (Tailwind CSS).\n- Solid grasp of asynchronous JavaScript (Promises, async/await), DOM manipulation, and REST APIs.\n- Familiarity with Git workflows and modern build tools (Vite, Webpack).",
+  "core_skills": [
+    "JavaScript", "TypeScript", "React", "HTML", "CSS", "Tailwind CSS",
+    "REST APIs", "Git", "Redux", "Figma"
+  ],
+  "bonus_skills": [
+    "Next.js", "GraphQL", "Node.js", "CI/CD", "Docker", "WebSockets"
+  ],
+  "min_education": "B.Tech / B.E. / BCA / MCA in CS / IT"
+}

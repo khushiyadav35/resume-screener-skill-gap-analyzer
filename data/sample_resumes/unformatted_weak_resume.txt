@@ -1,0 +1,22 @@
+Rahul Kumar
+City: Varanasi
+About Me: Enthusiastic and hardworking student looking for a good opportunity in IT company.
+
+Studies:
+College: Government Polytechnic / Engineering College
+Degree: B.Tech
+Year: 2024
+
+My Skills:
+I have good knowledge of computers. I know C language and some Python. Also HTML and CSS. Hard working, team player, fast learner.
+
+Work:
+Helped college professor with computer lab setup. Responsible for checking internet connections and installing software.
+Did some work in summer on a website project. Made pages using HTML and CSS for college event.
+
+Project:
+Made a calculator in C language.
+Made a library management system in Python. It can add books and delete books.
+
+Hobbies:
+Playing cricket, reading news, listening to music.

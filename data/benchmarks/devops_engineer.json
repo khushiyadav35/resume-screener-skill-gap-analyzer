@@ -1,0 +1,15 @@
+{
+  "id": "devops_engineer",
+  "title": "Cloud & DevOps Engineer (Associate / Fresher)",
+  "company_tier": "Cloud Native Enterprises & Infrastructure Startups",
+  "experience_level": "Entry-Level (0-1 Years)",
+  "job_description": "We are looking for an Associate Cloud & DevOps Engineer to automate build, test, and release pipelines, maintain cloud infrastructure on AWS/GCP, and ensure high availability of containerized services.\n\nKey Responsibilities:\n- Build and optimize CI/CD pipelines using GitHub Actions, GitLab CI, or Jenkins.\n- Containerize microservices using Docker and orchestrate scalable workloads on Kubernetes (EKS/GKE).\n- Manage Infrastructure as Code (IaC) using Terraform.\n- Administer Linux virtual machines, shell scripting, security configurations, and reverse proxies (Nginx).\n- Monitor cluster health, logging, and metrics using Prometheus, Grafana, and CloudWatch.\n\nMinimum Qualifications:\n- B.Tech in Computer Science, IT, or Electronics.\n- Practical experience with Linux command line, Bash scripting, and Git.\n- Foundational knowledge of AWS or GCP cloud computing services (EC2, S3, IAM, VPC).\n- Demonstrated understanding of Docker container lifecycle and basic Kubernetes concepts.",
+  "core_skills": [
+    "Linux", "Bash", "Docker", "Kubernetes", "AWS", "CI/CD",
+    "GitHub Actions", "Git", "Terraform", "Nginx"
+  ],
+  "bonus_skills": [
+    "Python", "Prometheus", "Grafana", "Google Cloud Platform (GCP)", "Ansible", "Helm"
+  ],
+  "min_education": "B.Tech / B.E. in CS / IT / ECE"
+}

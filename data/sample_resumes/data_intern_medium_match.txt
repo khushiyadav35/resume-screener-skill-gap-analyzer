@@ -1,0 +1,37 @@
+PRIYA VERMA
+Email: priya.verma2024@gmail.com | Phone: +91 91234 56789
+LinkedIn: https://linkedin.com/in/priya-verma-ds | Lucknow, India
+
+EDUCATION
+Bachelor of Technology in Information Technology
+Dr. A.P.J. Abdul Kalam Technical University (AKTU) | 2021 - 2025
+CGPA: 7.9 / 10.0
+
+SKILLS
+* Languages: Python, SQL, C++
+* Libraries: Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn
+* Tools: Jupyter Notebook, Git, MySQL, VS Code
+* Soft Skills: Analytical Thinking, Problem Solving, Presentation Skills
+
+EXPERIENCE
+Data Science Trainee | EdTech Academy (Remote)
+June 2024 - August 2024
+* Worked on analyzing customer churn dataset with 50,000 records.
+* Created data visualization charts using Seaborn and Matplotlib to present insights to mentors.
+* Built basic classification models including Logistic Regression and Random Forest using Scikit-Learn.
+* Cleaned missing values and handled outliers in CSV datasets using Pandas.
+
+PROJECTS
+1. Student Performance Predictor
+   * Developed a machine learning regression model to predict exam scores based on study hours.
+   * Achieved 82% accuracy on the test set using Linear Regression and Decision Trees.
+   * Built a simple UI using Streamlit to accept student inputs and display predicted marks.
+
+2. Retail Sales EDA Dashboard
+   * Performed exploratory data analysis on a retail transaction dataset in Jupyter Notebook.
+   * Generated correlation heatmaps and sales trendline plots for various store departments.
+   * Documented insights and shared analysis report with team members.
+
+CERTIFICATIONS
+* Python for Data Science - Coursera
+* SQL Basics - HackerRank

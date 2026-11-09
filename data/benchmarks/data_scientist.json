@@ -1,0 +1,15 @@
+{
+  "id": "data_scientist",
+  "title": "Data Scientist / Associate Analytics Specialist",
+  "company_tier": "Fintech / E-Commerce / Data Consultancies",
+  "experience_level": "Entry-Level / Fresher (B.Tech / M.Sc / MCA)",
+  "job_description": "We are looking for a Data Scientist to transform large-scale multi-source data into actionable business intelligence and predictive models. You will design statistical experiments, clean complex messy datasets, engineer domain features, and deploy machine learning models.\n\nKey Responsibilities:\n- Perform Exploratory Data Analysis (EDA) and data wrangling on millions of records using Pandas and NumPy.\n- Develop supervised and unsupervised machine learning algorithms using Scikit-Learn and XGBoost.\n- Formulate SQL queries to extract, transform, and aggregate data from PostgreSQL / Snowflake data warehouses.\n- Build informative interactive dashboards using Streamlit, Plotly, or Tableau to communicate statistical findings.\n- Collaborate with product managers and engineers to integrate predictive inference into production workflows.\n\nMinimum Qualifications:\n- B.Tech / M.Tech in CS, Data Science, Statistics, Mathematics or related STEM field.\n- Proficiency in Python, SQL, and data manipulation libraries (Pandas, NumPy).\n- Demonstrated understanding of statistical hypothesis testing, regression, classification, and evaluation metrics (ROC-AUC, F1-Score).\n- Experience with version control (Git) and reproducible Jupyter notebooks.",
+  "core_skills": [
+    "Python", "SQL", "Pandas", "NumPy", "Scikit-Learn", "Machine Learning",
+    "Data Analysis", "Feature Engineering", "Git", "PostgreSQL", "Matplotlib"
+  ],
+  "bonus_skills": [
+    "XGBoost", "Deep Learning", "PyTorch", "Streamlit", "Docker", "Snowflake", "Linux"
+  ],
+  "min_education": "B.Tech / M.Tech in CS / IT / Data Science / Statistics"
+}

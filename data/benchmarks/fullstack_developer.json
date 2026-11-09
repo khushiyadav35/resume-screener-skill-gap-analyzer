@@ -1,0 +1,15 @@
+{
+  "id": "fullstack_developer",
+  "title": "Full-Stack Software Engineer (Fresher / Junior)",
+  "company_tier": "High-Growth Product Companies & Global Tech Services",
+  "experience_level": "0-1 Years Experience",
+  "job_description": "We are looking for an energetic Full-Stack Software Engineer to build end-to-end features spanning responsive web frontends and resilient cloud backends.\n\nKey Responsibilities:\n- Develop interactive user interfaces using React, Next.js, and Tailwind CSS.\n- Build robust RESTful backend APIs and microservices using Node.js / Express or Python / FastAPI.\n- Design and maintain relational database schemas using PostgreSQL and MongoDB.\n- Write unit and integration tests to ensure code quality across the full stack.\n- Deploy and containerize web services using Docker and GitHub Actions CI/CD.\n\nMinimum Qualifications:\n- B.Tech / B.E. / MCA in Computer Science or related degree.\n- Practical full-stack project portfolio showcasing frontend and backend integration.\n- Proficiency in JavaScript / TypeScript or Python.\n- Working knowledge of SQL, NoSQL, Git, and RESTful architectural principles.",
+  "core_skills": [
+    "JavaScript", "TypeScript", "React", "Node.js", "Express.js",
+    "PostgreSQL", "MongoDB", "REST APIs", "Git", "HTML", "CSS"
+  ],
+  "bonus_skills": [
+    "Next.js", "Docker", "Tailwind CSS", "Redis", "CI/CD", "AWS"
+  ],
+  "min_education": "B.Tech / B.E. / MCA in CS / IT"
+}

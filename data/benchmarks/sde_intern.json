@@ -1,0 +1,16 @@
+{
+  "id": "sde_intern",
+  "title": "Software Development Engineer (SDE-1 / Fresher)",
+  "company_tier": "Product-based Tech Companies (Tier-1 / Fast-growing Startups)",
+  "experience_level": "Fresher / 0-1 Years (B.Tech / B.E. in CS / IT / ECE)",
+  "job_description": "We are seeking a high-potential Software Development Engineer (SDE-1) to join our core backend engineering team. As an entry-level engineer, you will write scalable, clean code, participate in code reviews, design efficient database schemas, and build microservices powering millions of requests daily.\n\nKey Responsibilities:\n- Design, develop, and maintain high-performance RESTful APIs and backend microservices.\n- Apply strong Data Structures and Algorithms (DSA) to solve complex computational problems.\n- Work with relational databases (PostgreSQL/MySQL) and caching layers (Redis) to optimize database queries.\n- Write modular, testable, and maintainable code adhering to SOLID principles and OOP design patterns.\n- Collaborate with cross-functional teams in an Agile / Scrum development environment.\n- Participate in CI/CD pipeline deployments using Docker and GitHub Actions.\n\nMinimum Qualifications:\n- B.Tech / B.E. / MCA in Computer Science, Information Technology, or related quantitative field.\n- Strong proficiency in at least one core language: Java, C++, Python, or Go.\n- Sound understanding of Computer Science fundamentals: Operating Systems, Computer Networks, and DBMS.\n- Hands-on experience with Git version control, REST APIs, and SQL.",
+  "core_skills": [
+    "Data Structures & Algorithms", "Java", "C++", "Python", "SQL",
+    "PostgreSQL", "REST APIs", "Git", "Object-Oriented Programming (OOP)",
+    "Operating Systems", "Computer Networks", "Database Management Systems (DBMS)"
+  ],
+  "bonus_skills": [
+    "Docker", "Redis", "Microservices", "CI/CD", "Linux", "System Design", "Agile / Scrum"
+  ],
+  "min_education": "B.Tech / B.E. / MCA in Computer Science or related branch"
+}
